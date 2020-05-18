@@ -16,39 +16,39 @@ class LoginController extends ControllerBase{
         }
 
         if ($this->request->isPost()) {
-            $email_murid = $this->request->getPost("email");
-            $password_murid = $this->request->getPost("password");
+            $email = $this->request->getPost("email");
+            $password = $this->request->getPost("password");
 
-            if ($email_murid === "" && $password_murid === ""){
+            if ($email === "" && $password === ""){
                 $this->flashSession->error("Anda belum mengisi email dan password");
                 return $this->view->pick("login/index");
             }
 
-            if ($email_murid === "") {
+            if ($email === "") {
                 $this->flashSession->error("Isi email anda");
                 //pick up the same view to display the flash session errors
                 return $this->view->pick("login/index");
             }
 
-            if ($password_murid === "") {
+            if ($password === "") {
                 $this->flashSession->error("Password anda kosong");
                 //pick up the same view to display the flash session errors
                 return $this->view->pick("login/index");
             }
 
             $user = Murid::findFirst([ 
-                'email_murid = :email:',
+                'email = :email:',
                 'bind' => [
-                   'email' => $email_murid,
+                   'email' => $email,
                 ]
             ]);
 
             if ($user) {
-                if ($password_murid === $user->password_murid){
+                if ($password === $user->password){
                     $this->session->set('AUTH_ID', $user->id_murid);
                     $this->session->set('AUTH_NAME', $user->nama_murid);
-                    $this->session->set('AUTH_EMAIL', $user->email_murid);
-                    $this->session->set('AUTH_PASS', $user->password_murid);   
+                    $this->session->set('AUTH_EMAIL', $user->email);
+                    $this->session->set('AUTH_PASS', $user->password);   
 
                     return $this->response->redirect('/dashboard');
                 }

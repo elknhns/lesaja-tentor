@@ -62,12 +62,12 @@
                 </div>
                 <?php $i = 1; ?>
                 <?php foreach ($mapels as $mapel) { ?>
-                <?php if ($mapel->img_src !== null && $mapel->jenjang_mapel === 'SD') { ?>
+                <?php if ($mapel->icon !== null && $mapel->jenjang_mapel === 'SD') { ?>
 
                 <div class="mapel-<?= $i ?>" align="center">
                     <div class="<?= $mapel->class ?>">
                         <br><br>
-                        <img src="img/<?= $mapel->img_src ?>" width=60px>
+                        <img src="img/<?= $mapel->icon ?>" width=60px>
                     </div>
                     <div class="content-mapel" align="center">
                         <br>
@@ -100,11 +100,11 @@
                 </div>
                 <?php $i = 1; ?>
                 <?php foreach ($mapels as $mapel) { ?>
-                <?php if ($mapel->img_src !== null && $mapel->jenjang_mapel === 'SMP') { ?>
+                <?php if ($mapel->icon !== null && $mapel->jenjang_mapel === 'SMP') { ?>
                 <div class="mapel-<?= $i ?>">
                     <div class="<?= $mapel->class ?>" align="center">
                         <br><br>
-                        <img src="img/<?= $mapel->img_src ?>" width=80px>
+                        <img src="img/<?= $mapel->icon ?>" width=80px>
                     </div>
                     <div class="content-mapel" align="center">
                         <br>
@@ -137,11 +137,11 @@
                 </div>
                 <?php $i = 1; ?>
                 <?php foreach ($mapels as $mapel) { ?>
-                <?php if ($mapel->img_src !== null && $mapel->jenjang_mapel === 'SMA') { ?>
+                <?php if ($mapel->icon !== null && $mapel->jenjang_mapel === 'SMA') { ?>
                 <div class="mapel-<?= $i ?>">
                     <div class="<?= $mapel->class ?>" align="center">
                         <br><br>
-                        <img src="img/<?= $mapel->img_src ?>" width=80px>
+                        <img src="img/<?= $mapel->icon ?>" width=80px>
                     </div>
                     <div class="content-mapel" align="center">
                         <br>

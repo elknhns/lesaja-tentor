@@ -16,15 +16,15 @@ class RegisterController extends ControllerBase
 
         // get value
         $nama_murid = $this->request->getPost('nama', 'string');
-        $email_murid = $this->request->getPost('email', 'string');
-        $password_murid = $this->request->getPost('password', 'string');
+        $email = $this->request->getPost('email', 'string');
+        $password = $this->request->getPost('password', 'string');
         $confirm = $this->request->getPost('confirm', 'string');
 
         $exist = Murid::findFirst(
             [
-                'conditions' => 'email_murid = :email:',
+                'conditions' => 'email = :email:',
                 'bind'       => [
-                    'email' => $email_murid,
+                    'email' => $email,
                 ],
             ]
         );
@@ -35,7 +35,7 @@ class RegisterController extends ControllerBase
         }
 
         else{
-            if ($password_murid != $confirm){
+            if ($password != $confirm){
                 $this->flashSession->error("Password tidak cocok");
                 $this->response->redirect('register');
                 return false;
@@ -43,8 +43,8 @@ class RegisterController extends ControllerBase
             else{
                 // set value
                 $user->nama_murid = $nama_murid;
-                $user->email_murid = $email_murid;
-                $user->password_murid = $password_murid;
+                $user->email = $email;
+                $user->password = $password;
 
                 $success = $user->save();
                 $this->flashSession->success("Berhasil terdaftar!");
@@ -54,8 +54,8 @@ class RegisterController extends ControllerBase
                     // Set a session
                     $this->session->set('AUTH_ID', $user->id_murid);
                     $this->session->set('AUTH_NAME', $user->nama_murid);
-                    $this->session->set('AUTH_EMAIL', $user->email_murid);
-                    $this->session->set('AUTH_PASS', $user->password_murid);  
+                    $this->session->set('AUTH_EMAIL', $user->email);
+                    $this->session->set('AUTH_PASS', $user->password);  
 
                     $this->response->redirect("/dashboard");
                     

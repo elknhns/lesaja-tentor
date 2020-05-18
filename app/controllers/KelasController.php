@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Models\Murid;
-use App\Models\MataPelajaran;
+use App\Models\Mapel;
 
 class BookingController extends ControllerBase
 {   

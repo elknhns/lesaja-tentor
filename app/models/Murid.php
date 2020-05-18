@@ -9,7 +9,7 @@ class Murid extends Model
     // variables
     public $id_murid;
     public $nama_murid;
-    public $email_murid;
-    public $password_murid;
+    public $email;
+    public $password;
 
 }

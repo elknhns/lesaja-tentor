@@ -69,7 +69,7 @@
                     <tr>
                         <th scope="row"><?= $v120658372939717899601loop->index ?></th>
                         <td><?= $item['nama_tentor'] ?></td>
-                        <td><?= $item['email_tentor'] ?></td>
+                        <td><?= $item['email'] ?></td>
                         <td><?= $item['jkel'] ?></td>
                         <td><?= $item['tgl_lahir'] ?></td>
                     </tr>

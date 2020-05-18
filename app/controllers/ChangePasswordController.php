@@ -14,11 +14,11 @@ class ChangePasswordController extends ControllerBase
     public function changeSubmitAction(){
         if ($this->request->isPost()) 
         {
-            $password_murid = $this->request->getPost("old-pwd");
+            $password = $this->request->getPost("old-pwd");
             $confirm = $this->request->getPost("new-pwd");
             $confirm1 = $this->request->getPost('new-pwd1');
 
-            if ($password_murid === null)
+            if ($password === null)
             {
                 $this->flashSession->error("Password anda kosong");
                 //pick up the same view to display the flash session errors
@@ -29,16 +29,16 @@ class ChangePasswordController extends ControllerBase
 
             $exist = Murid::findFirst(
                 [
-                    'conditions' => 'password_murid = :pwd:',
+                    'conditions' => 'password = :pwd:',
                     'bind'       => [
-                        'pwd' => $password_murid, //eh
+                        'pwd' => $password, //eh
                     ],
                 ]
             );
 
             if (!$exist)
             {
-                $this->flashSession->error("Password anda salah ".$password_murid);
+                $this->flashSession->error("Password anda salah ".$password);
                 return $this->response->redirect('changepassword');
             }
 
@@ -49,14 +49,14 @@ class ChangePasswordController extends ControllerBase
                     return $this->response->redirect('changepassword');
                 }
 
-                if($password_murid !== $exist->password_murid)
+                if($password !== $exist->password)
                 {
                     return $this->response->redirect('changepassword');
                 }
                 else
                 {
                     // set value
-                    $exist->password_murid = $confirm;
+                    $exist->password = $confirm;
                     
                     // Store and check for errors
                     $success = $exist->update();

@@ -4,7 +4,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 Use App\Models\Murid;
-Use App\Models\MataPelajaran;
+Use App\Models\Mapel;
 Use App\Models\Kelas;
 
 class DashboardController extends ControllerBase
@@ -15,13 +15,13 @@ class DashboardController extends ControllerBase
             $this->flashSession->error("Not Authorized");
             return $this->response->redirect('login');
         }
-        $this->view->mapels=MataPelajaran::find();
+        $this->view->mapels=Mapel::find();
         $this->view->pick('dashboard/dashboard');
     }
 
     public function joinAction($id)
     {   
-        $cari=MataPelajaran::findFirst([
+        $cari=Mapel::findFirst([
             'id_mapel = :id:',
                 'bind' => [
                     'id' => $id,

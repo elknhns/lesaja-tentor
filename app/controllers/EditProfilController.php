@@ -25,9 +25,9 @@ class EditProfilController extends ControllerBase
         if ($this->request->isPost()) 
         {
             $nama_murid = $this->request->getPost("nama");
-            $email_murid = $this->request->getPost("email");
+            $email = $this->request->getPost("email");
 
-            if ($nama_murid === null && $email_murid === null)
+            if ($nama_murid === null && $email === null)
             {
                 $this->flashSession->error("Data tidak boleh kosong");
                 //pick up the same view to display the flash session errors
@@ -35,9 +35,9 @@ class EditProfilController extends ControllerBase
             }
             $exist = Murid::findFirst(
                 [
-                    'conditions' => 'email_murid = :email:',
+                    'conditions' => 'email = :email:',
                     'bind'       => [
-                        'email' => $email_murid,
+                        'email' => $email,
                     ],
                 ]
             );
@@ -59,7 +59,7 @@ class EditProfilController extends ControllerBase
                 {
                     // set value
                     $exist->nama_murid = $nama_murid;
-                    $exist->email_murid = $email_murid;
+                    $exist->email = $email;
                     
                     // Store and check for errors
                     $success = $exist->update();

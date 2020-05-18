@@ -203,6 +203,11 @@
     justify-content: baseline;
     align-items: baseline;
   }
+
+  .mapel-list {
+    
+  }
+
   .rightnav{
     float: right;
   }
@@ -233,7 +238,7 @@
 
   .navbar-brand {
     display: block;
-    padding-left: 200px;
+    padding-left: 60px;
     align-content: center;
   }
 
@@ -356,7 +361,7 @@
 
   .box-kelas{
     display: flex;
-    width: 1550px;
+    width: 1000px;
     height: 350px;
     border-radius: 10px;
     font-weight: 400;
@@ -396,7 +401,7 @@
   }
 
   .cover-mapel1{
-    width: 1475px;
+    width: 900px;
     height: 300px;
     position: absolute;
     align-items: center;
@@ -483,76 +488,50 @@
     font-family: 'Google Sans', Arial, sans-serif;
   }
 
-  .kotak-mat{
-    width: 200px;
-    height: 180px;
-    background-color:#FFF176;
-    justify-content: center;
-    border-radius: 10px,10px,0,0;
-    
-  }
-
-  .kotak-ipa{
-    width: 200px;
-    height: 180px;
-    background-color: #00C853;
-    justify-content: center;
-    top:0; left:0; right:0; bottom:0;
-  }
-
-  .kotak-ips{
-    width: 200px;
-    height: 180px;
-    background-color: #64B5F6;
-    justify-content: center;
-    top:0; left:0; right:0; bottom:0;
-  }
-
-  .kotak-inggris{
-    width: 200px;
-    height: 180px;
-    background-color: navy;
-    justify-content: center;
-    top:0; left:0; right:0; bottom:0;
-  }
-
-  .kotak-fisika{
-    width: 200px;
-    height: 180px;
-    background-color: #AA00FF;
-    justify-content: center;
-    top:0; left:0; right:0; bottom:0;
-  }
-
-  .kotak-tik{
-    width: 200px;
-    height: 180px;
-    background-color: #3F51B5;
-    justify-content: center;
-    top:0; left:0; right:0; bottom:0;
-  }
-
-  .kotak-biologi{
-    width: 200px;
-    height: 180px;
-    background-color: #1DE9B6;
-    justify-content: center;
-    top:0; left:0; right:0; bottom:0;
-  }
-
-  .kotak-bi{
-    width: 200px;
-    height: 180px;
-    background-color: #B71C1C;
-    justify-content: center;
-    top:0; left:0; right:0; bottom:0;
-  }
-
   .icon{
     width: 75px;
     height: 75px;
     align-items: center;
     background-color: #FFF;
+  }
+
+  .icon-mapel {
+    width: 200px;
+    height: 180px;
+    justify-content: center;
+    border-radius: 10px 10px 0px 0px;
+  }
+
+  .bi {
+    background-color: #B71C1C;
+  }
+
+  .biologi {
+    background-color: #1DE9B6;
+  }
+
+  .fisika {
+    background-color: #AA00FF;
+  }
+
+  .inggris {
+    background-color: navy;
+  }
+
+  .ipa {
+    background-color: #00C853;
+  }
+
+  .ips {
+    background-color: #64B5F6;
+  }
+
+  .mat {
+    background-color: #FFF176;
+  }
+
+  .tik {
+    background-color: #3F51B5;
   }
 
   .content-mapel{
@@ -1084,7 +1063,8 @@
   height: 45px;
   padding-right: 10px;
   margin-top: -5px;
-  margin-left: 1100px;
+  margin-left: auto;
+  margin-right: 50px;
 }
 
 .btnregis{
