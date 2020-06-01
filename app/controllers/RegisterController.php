@@ -3,72 +3,60 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-Use App\Models\Murid;
+Use App\Models\Tentor;
 
-class RegisterController extends ControllerBase
-{  
-    public function indexAction(){
+class RegisterController extends ControllerBase {  
+    public function indexAction() {
 
     }
      
-    public function registerSubmitAction(){
-        $user = new Murid();
-
+    public function registerSubmitAction() {
+        $user = new Tentor();
+        
         // get value
-        $nama_murid = $this->request->getPost('nama', 'string');
-        $email = $this->request->getPost('email', 'string');
-        $password = $this->request->getPost('password', 'string');
+        $nama_tentor = $this->request->getPost('nama', 'string');
+        $email_tentor = $this->request->getPost('email', 'string');
+        $password_tentor = $this->request->getPost('password', 'string');
         $confirm = $this->request->getPost('confirm', 'string');
 
-        $exist = Murid::findFirst(
-            [
-                'conditions' => 'email = :email:',
+        $exist = Tentor::findFirst([
+                'conditions' => 'email_tentor = :email:',
                 'bind'       => [
-                    'email' => $email,
+                    'email' => $email_tentor,
                 ],
             ]
         );
 
-        if ($exist){
+        if ($exist) {
             $this->flashSession->error("Email telah terdaftar");
             $this->response->redirect('register');
-        }
-
-        else{
-            if ($password != $confirm){
+        } else {
+            if ($password_tentor != $confirm) {
                 $this->flashSession->error("Password tidak cocok");
                 $this->response->redirect('register');
                 return false;
-            }
-            else{
+            } else {
                 // set value
-                $user->nama_murid = $nama_murid;
-                $user->email = $email;
-                $user->password = $password;
+                $user->nama_tentor = $nama_tentor;
+                $user->email_tentor = $email_tentor;
+                $user->password_tentor = $password_tentor;
 
-                $success = $user->save();
-                $this->flashSession->success("Berhasil terdaftar!");
+                $success = $user->save(); 
 
-                // Log the user/admin in
+                // Log the user
                 if ($success) {
+                    $this->flashSession->success("Berhasil terdaftar!");
                     // Set a session
-                    $this->session->set('AUTH_ID', $user->id_murid);
-                    $this->session->set('AUTH_NAME', $user->nama_murid);
-                    $this->session->set('AUTH_EMAIL', $user->email);
-                    $this->session->set('AUTH_PASS', $user->password);  
-
-                    $this->response->redirect("/dashboard");
+                    $this->session->set('AUTH_ID', $user->id_tentor);
+                    $this->session->set('AUTH_NAME', $user->nama_tentor);
+                    $this->session->set('AUTH_EMAIL', $user->email_tentor);
+                    $this->session->set('AUTH_PASS', $user->password_tentor);  
                     
-                    // Go to User
-                    // if ($user->roles == 0) 
-                    // {
-                    //     $this->response->redirect("/dashboard");
-                    // } 
-                    }
-                    // Exit 
-                else
-                {
-                    return $this->response->redirect('login');
+                    $this->response->redirect("/index");
+
+                } else {
+                    $this->flashSession->error("Akun gagal didaftarkan");
+                    return $this->response->redirect('register');
                 }
             }
         }

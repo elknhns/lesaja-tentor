@@ -11,7 +11,7 @@ $router->removeExtraSlashes(true);
 //setting automatic routes
 $router->add('/', [
     'namespace' => 'App\Controllers',
-    'controller' =>  'index',
+    'controller' =>  'login',
     'action' =>  'index'
 ]);
 

@@ -4,7 +4,6 @@
     },
     "require": {
         "vlucas/phpdotenv": "^4.1",
-        "twbs/bootstrap": "4.3.1",
-        "tamtamchik/simple-flash": "^2.0"
+        "twbs/bootstrap": "4.3.1"
     }
 }

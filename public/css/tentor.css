@@ -1,0 +1,93 @@
+@font-face {
+  font-family: LesajaFont-Regular;
+  src: url("../font/GoogleSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: LesajaFont-Bold;
+  src: url("../font/GoogleSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: LesajaFont-Italic;
+  src: url("../font/GoogleSans-Italic.ttf") format("truetype");
+}
+
+body {
+  font-family: LesajaFont-Regular;
+}
+
+ a, .btn {
+  font-family: LesajaFont-Bold;
+}
+
+body h3 {
+  font-family: LesajaFont-Italic;
+}
+
+.btn, .btn-outline-success:hover, .btn-outline-success:not(:disabled):not(.disabled):active {
+  border-width: 2px;
+  border-color: #FF7408;
+}
+
+.btn-sm {
+  width: 88px;
+}
+
+.btn-md {
+  width: 150px;
+}
+
+.btn-success, .btn-outline-success:hover, .btn-outline-success:not(:disabled):not(.disabled):active {
+  background-color: #FF7408;
+  color: #fff;
+}
+
+.btn-success:hover, .btn-success:not(:disabled):not(.disabled):active {
+  background-color: #F06800;
+  border-color: #F06800;
+}
+
+.btn-outline-success {
+  color: #FF7408;
+  background-color: #fff;
+}
+
+.btn-link {
+  font-weight: 400;
+  color: #FF7408;
+  font-size: small;
+}
+
+.btn-link:hover {
+  color: #F06800;
+  text-decoration: none;
+}
+
+.box-center {
+  padding: 40px 80px;
+  width: 450px;
+  margin: 5% auto;
+  border: 1px solid #FF7408;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
+.content-section {
+  margin: 100px 50px;
+}
+
+.form-control, select {
+  color: #FF7408;
+  opacity: 1;
+  display: block;
+  height: 42px;
+  padding: 0.375rem 0.75rem;
+  font-size: 14px;
+  font-weight: 200;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #FF7408;
+  border-radius: 10px;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

@@ -10,6 +10,6 @@ class Mapel extends Model
     public $id_mapel;
     public $nama_mapel;
     public $jenjang;
-    public $icon;
-
+    public $img_src;
+    public $class;
 }

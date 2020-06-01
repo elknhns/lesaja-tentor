@@ -103,27 +103,28 @@ $di->setShared('modelsMetadata', function () {
 /**
  * Register the session flash service with the Twitter Bootstrap classes
  */
-$di->set('flash', function () {
+$di->setShared('flash', function () {
     $escaper = new Escaper();
     $flash = new Flash($escaper);
     $flash->setImplicitFlush(false);
     $flash->setCssClasses([
-        'error'   => 'alert alert-danger',
-        'success' => 'alert alert-success',
-        'notice'  => 'alert alert-info',
-        'warning' => 'alert alert-warning'
+        'error'   => 'alert alert-danger alert-dismissible',
+        'success' => 'alert alert-success alert-dismissible',
+        'notice'  => 'alert alert-info alert-dismissible',
+        'warning' => 'alert alert-warning alert-dismissible'
     ]);
-
+    
     return $flash;
 });
-$di->set("flashSession", function () {
+$di->setShared("flashSession", function () {
     $flashSession = new FlashSession();
     $flashSession->setCssClasses(array(
-        'error' => 'alert alert-danger',
-        'success' => 'alert alert-success',
-        'notice' => 'alert alert-info',
-        'warning' => 'alert alert-warning'
+        'error' => 'alert alert-danger alert-dismissible',
+        'success' => 'alert alert-success alert-dismissible',
+        'notice' => 'alert alert-info alert-dismissible',
+        'warning' => 'alert alert-warning alert-dismissible'
     ));
+
     return $flashSession;
 });
 

@@ -2,7 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controllers;
-Use App\Models\Murid;
+Use App\Models\Tentor;
 
 class LoginController extends ControllerBase{
     public function indexAction(){
@@ -10,56 +10,52 @@ class LoginController extends ControllerBase{
 
     public function loginSubmitAction(){
 
-        if($this->session->has('AUTH_ID')){
-            $this->flashSession->error("Already Login");
-            return $this->response->redirect('dashboard');
-        }
-
+        // Jika menekan tombol Masuk
         if ($this->request->isPost()) {
-            $email = $this->request->getPost("email");
-            $password = $this->request->getPost("password");
+            $email_input = $this->request->getPost("email");
+            $password_input = $this->request->getPost("password");
 
-            if ($email === "" && $password === ""){
+            if ($email_input === "" && $password_input === ""){
                 $this->flashSession->error("Anda belum mengisi email dan password");
                 return $this->view->pick("login/index");
             }
 
-            if ($email === "") {
+            if ($email_input === "") {
                 $this->flashSession->error("Isi email anda");
                 //pick up the same view to display the flash session errors
                 return $this->view->pick("login/index");
             }
 
-            if ($password === "") {
+            if ($password_input === "") {
                 $this->flashSession->error("Password anda kosong");
                 //pick up the same view to display the flash session errors
                 return $this->view->pick("login/index");
             }
 
-            $user = Murid::findFirst([ 
-                'email = :email:',
+            $exist = Tentor::findFirst([ 
+                'email_tentor = :email:',
                 'bind' => [
-                   'email' => $email,
+                   'email' => $email_input,
                 ]
             ]);
 
-            if ($user) {
-                if ($password === $user->password){
-                    $this->session->set('AUTH_ID', $user->id_murid);
-                    $this->session->set('AUTH_NAME', $user->nama_murid);
-                    $this->session->set('AUTH_EMAIL', $user->email);
-                    $this->session->set('AUTH_PASS', $user->password);   
-
-                    return $this->response->redirect('/dashboard');
+            if ($exist) {
+                if ($password_input === $exist->password_tentor){
+                    $this->session->set('AUTH_ID', $exist->id_tentor);
+                    $this->session->set('AUTH_NAME', $exist->nama_tentor);
+                    $this->session->set('AUTH_EMAIL', $exist->email_tentor);
+                    $this->session->set('AUTH_PASS', $exist->password_tentor);   
+                    return $this->response->redirect('/index');
+                } else {
+                    // The validation has failed
+                    $this->flashSession->error("Password Salah");
+                    return $this->response->redirect('login');
                 }
             } else {
                 // The validation has failed
                 $this->flashSession->error("User tidak terdaftar");
                 return $this->response->redirect('login');
             }
-            // The validation has failed
-            $this->flashSession->error("Password Salah");
-            return $this->response->redirect('login');
         }
     }
 }
